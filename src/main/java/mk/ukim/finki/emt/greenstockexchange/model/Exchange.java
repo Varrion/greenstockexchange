@@ -4,26 +4,47 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table (name = "stock_exchange")
+@Table(name = "stock_exchange")
 public class Exchange {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-            @Column (name = "exchange_id")
-    Double id;
+    Long id;
 
-    @Column (name = "start_date")
+
+    @Column(name = "start_date")
     Date startDate;
+
+    @Column(name = "end_date")
+    Date endDate;
 
     @Column(name = "exchange_quantity")
     int quantity;
 
+    @ManyToOne
+    Product product;
 
-    public Double getId() {
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Double id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

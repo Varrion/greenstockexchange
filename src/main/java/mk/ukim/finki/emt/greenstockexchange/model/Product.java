@@ -3,59 +3,37 @@ package mk.ukim.finki.emt.greenstockexchange.model;
 import javax.persistence.*;
 
 @Entity
-@Table (name="products")
+@Table(name = "products")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column (name="product_name")
+    @Column(name = "product_name")
     String name;
 
-    @Column (name = "product_description")
+    @Column(name = "product_description")
     String description;
 
-    @Column (name="product_origin")
+    @Column(name = "product_origin")
     String origin;
 
-    @Column (name = "product_location")
+    @Column(name = "product_location")
     String location;
 
-    @Column (name="product_Starting_price")
-    int startingPrice;
-
-    @Column (name= "product_image")
+    @Column(name = "product_image")
     @Lob
     byte[] image;
 
-    @ManyToOne (fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     User user;
 
-    @Column (name = "product_quaility")
+    @Column(name = "product_quaility")
     Quality quality;
 
-    @Column (name="product_quantity")
-    int quantity;
 
-    @ManyToOne (fetch = FetchType.EAGER)
-    Exchange exchange;
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public Exchange getExchange() {
-        return exchange;
-    }
-
-    public void setExchange(Exchange exchange) {
-        this.exchange = exchange;
-    }
 
     public User getUser() {
         return user;
@@ -113,14 +91,6 @@ public class Product {
         this.location = location;
     }
 
-    public int getStartingPrice() {
-        return startingPrice;
-    }
-
-    public void setStartingPrice(int startingPrice) {
-        this.startingPrice = startingPrice;
-    }
-
     public byte[] getImage() {
         return image;
     }
@@ -129,7 +99,7 @@ public class Product {
         this.image = image;
     }
 
-    public enum Quality { BAD, AVERAGE , GOOD, EXTRA_GOOD  }
+    public enum Quality {BAD, AVERAGE, GOOD, EXTRA_GOOD}
 }
 
 
