@@ -1,28 +1,32 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import {LocationProvider, Router} from "@reach/router";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import CreateProductPage from "./pages/CreateProductPage";
+import Dashboard from "./pages/DashboardPage";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <Header/>
+                <div className="App">
+                    <LocationProvider>
+                        <Router>
+                            <Dashboard path="/" />
+                            <LoginPage path="/login" default/>
+                            <RegisterPage path='/register'/>
+                            <CreateProductPage path='/create/product'/>
+                        </Router>
+                    </LocationProvider>
+                </div>
+                <Footer/>
+            </div>
+        );
+    }
 }
 
 export default App;
