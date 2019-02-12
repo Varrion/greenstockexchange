@@ -1,8 +1,7 @@
-import React, {Component, useState} from "react";
+import React, {useState} from "react";
 import LoginImage from '../assets/Fruits-veggies-701x466.jpg';
 import TextField from "@material-ui/core/TextField/TextField";
 import Button from "@material-ui/core/Button/Button";
-import {makeStyles} from '@material-ui/styles';
 
 
 function LoginPage(props) {
@@ -28,46 +27,37 @@ function LoginPage(props) {
     }
 
     return (
-        <div style={{display: 'flex', alignItems: "stretch"}}>
-            <div style={{
-                position: 'absolute',
-                width: '100%',
-                display: 'flex',
-                alignItems: 'stretch',
-                flexDirection: 'row'
-            }}>
-                <div style={{minWidth: '50%', display:'flex'}}>
-                    <img src={LoginImage}/>
-                </div>
-                <div style={{minWidth: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                    <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column'}}>
-                        <TextField
-                            style={{width: '250px'}}
-                            id="username"
-                            label="Username"
-                            value={loginValues.username}
-                            onChange={handleChange('username')}
-                            margin="normal"
-                        />
+        <div style={{display:'flex', height:'100%'}}>
+            <img src={LoginImage} height={562} width={'50%'}/>
+            <div style={{display:'flex' , justifyContent:'center', minWidth:'50%' }}>
+                <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column', alignItems:'center', justifyContent:'center'}}>
+                    <TextField
+                        style={{width: '300px'}}
+                        id="username"
+                        label="Username"
+                        value={loginValues.username}
+                        onChange={handleChange('username')}
+                        margin="normal"
+                    />
 
 
-                        <br/>
-                        <TextField value={loginValues.password}
-                                   label="Password"
-                                   style={{width: '250px', marginTop: '10px'}}
-                                   onChange={handleChange('password')}
-                                   type="password"/>
-                        <br/>
-                        <br/>
-                        <div style={{display: 'flex', alignSelf: 'center', marginTop: '15px'}}>
-                            <Button variant="contained" color="primary" type="submit">
-                                Login
-                            </Button>
-                        </div>
-                    </form>
-                </div>
+                    <br/>
+                    <TextField value={loginValues.password}
+                               label="Password"
+                               style={{width: '300px', marginTop: '10px'}}
+                               onChange={handleChange('password')}
+                               type="password"/>
+                    <br/>
+                    <br/>
+                    <div style={{display: 'flex', marginTop: '15px'}}>
+                        <Button variant="contained" color="primary" type="submit">
+                            Login
+                        </Button>
+                    </div>
+                </form>
             </div>
         </div>
+
     );
 }
 

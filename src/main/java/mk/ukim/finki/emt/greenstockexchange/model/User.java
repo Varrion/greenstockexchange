@@ -1,6 +1,7 @@
 package mk.ukim.finki.emt.greenstockexchange.model;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 @Table(name = "users")
@@ -27,7 +28,7 @@ public class User {
 
     @Lob
     @Column(name = "user_image")
-    byte[] picture;
+    Optional<byte[]> picture;
 
     @Column(name = "user_location")
     String location;
@@ -80,12 +81,12 @@ public class User {
         this.description = description;
     }
 
-    public byte[] getPicture() {
+    public Optional<byte[]> getPicture() {
         return picture;
     }
 
     public void setPicture(byte[] picture) {
-        this.picture = picture;
+        this.picture = Optional.ofNullable(picture);
     }
 
     public String getLocation() {

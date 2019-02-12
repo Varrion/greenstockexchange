@@ -8,12 +8,19 @@ import RegisterPage from "./pages/RegisterPage";
 import CreateProductPage from "./pages/CreateProductPage";
 import Dashboard from "./pages/DashboardPage";
 
+const content ={
+    padding:'10',
+    paddingBottom:'70px',
+    height:'100%',
+
+};
+
 class App extends Component {
     render() {
         return (
-            <div>
+            <div className="AppContainer">
                 <Header/>
-                <div className="App">
+                <div style={content}>
                     <LocationProvider>
                         <Router>
                             <Dashboard path="/" />

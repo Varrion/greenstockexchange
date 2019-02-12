@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/rest/user")
 public class UserController {
@@ -29,7 +30,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable Long id) {
+    public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
 
@@ -39,7 +40,7 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public User addProduct(@RequestBody User user) {
+    public User addUser(@RequestBody User user) {
         return userService.addUser(user);
     }
 

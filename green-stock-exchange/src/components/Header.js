@@ -5,7 +5,7 @@ import {Link} from "@reach/router";
 
 function Header() {
     return (
-        <Navbar collapseOnSelect>
+        <Navbar collapseOnSelect style={{marginBottom:'0px'}}>
             <Navbar.Header>
                 <Navbar.Brand>
                     <a href="/"><img src={Logo} width={60} height={30}/> </a>
@@ -14,15 +14,16 @@ function Header() {
             </Navbar.Header>
             <Navbar.Collapse>
                 <Nav>
-                    <NavItem eventKey={1} componentClass={Link} to="create/product" href="/create/product">
-                        Create Product
+                    <NavItem eventKey={1} href="/">
+                        Home Page
                     </NavItem>
                     <NavItem eventKey={2}>
-                        Navigate
+                        AboutUs
                     </NavItem>
-                    <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-                        <MenuItem eventKey={3.1}>Action</MenuItem>
-                        <MenuItem eventKey={3.2}>Another action</MenuItem>
+                    <NavDropdown eventKey={3} title="Actions" id="basic-nav-dropdown">
+                        <MenuItem eventKey={3.1} componentClass={Link} to="create/product" href="/create/product" >Create Product</MenuItem>
+                        <MenuItem eventKey={3.1} componentClass={Link} to="create/product" href="/create/product" >Products</MenuItem>
+                        <MenuItem eventKey={3.2}>Members</MenuItem>
                         <MenuItem eventKey={3.3}>Something else here</MenuItem>
                         <MenuItem divider/>
                         <MenuItem eventKey={3.3}>Separated link</MenuItem>

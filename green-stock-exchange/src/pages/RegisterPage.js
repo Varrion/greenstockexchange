@@ -1,7 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import TextField from "@material-ui/core/TextField/TextField";
 import Button from "@material-ui/core/Button/Button";
 import styled from 'styled-components'
+import {createUser, fetchAllUsers} from "../services/UserApi";
+import {navigate} from "@reach/router";
 
 const Container = styled.div`
   display:flex;
@@ -21,8 +23,9 @@ display:flex;
 
 function RegisterForm() {
 
+    const [users, setUsers] = useState(null);
     const [loginValues, setLoginValues] = useState({
-        username: '',
+        name: '',
         password: '',
         mobile: '',
         location: '',
@@ -42,9 +45,19 @@ function RegisterForm() {
 
     const handleSubmit = event => {
         event.preventDefault();
-        console.log(loginValues);
-    }
+        createUser(loginValues).then(res=> console.log("Uspesno ", res))
+        navigate('/');
+    };
 
+    useEffect(() => {
+        fetchAllUsers().then(res => {
+            setUsers(res)
+        })
+    }, []);
+
+
+    console.log("Users", users);
+    console.log(loginValues);
 
     return (
         <Container>
@@ -54,8 +67,8 @@ function RegisterForm() {
                     fullWidth
                     label="Name"
                     margin="normal"
-                    value={loginValues.username}
-                    onChange={handleChange('username')}
+                    value={loginValues.name}
+                    onChange={handleChange('name')}
                 />
 
                 <br/>
